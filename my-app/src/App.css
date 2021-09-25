@@ -1,0 +1,30 @@
+.box{
+    display: flexbox;
+    position: absolute;
+    width:100%;
+    overflow: hidden;
+}
+.grad{
+    background:linear-gradient(to right, #337572, #0cc0e4);
+    color:white;
+}
+.navbar-link{
+    text-decoration: none;
+    color:white;
+    float:right;
+    margin:10px;
+    line-height:'30px'
+}
+.navbar-link:hover{
+    color:white;
+    font-weight: bold;
+}
+footer{
+   background:linear-gradient(to right, #215856, #0aaccc);
+   color:white;
+   position: fixed;
+   height: 6vh;
+   width:100%;
+   text-align: center;
+   bottom:0%;
+}

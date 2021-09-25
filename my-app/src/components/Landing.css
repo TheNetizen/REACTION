@@ -1,0 +1,16 @@
+img{
+    height: 80%;
+    width:80%
+}
+.card{
+   
+    position: relative;
+    height:44vh;
+}
+.gradcard2{
+    background:linear-gradient(to right, #efd0f3b9, #daf6fcd5);
+}
+.gradminicard{
+    border-radius: 2vh;
+    box-shadow: rgb(207, 201, 207);
+}
