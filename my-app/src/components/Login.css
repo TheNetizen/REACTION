@@ -1,0 +1,6 @@
+body .btn-check:focus+.btn,body .btn:focus {
+    box-shadow: none !important;
+}
+label{
+    font-size: 14px;
+}

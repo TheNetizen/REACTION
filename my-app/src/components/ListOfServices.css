@@ -1,0 +1,8 @@
+.bg{
+    background-image: url('../ListOS.jpg');
+}
+.gradminicard{
+    background:linear-gradient(to right, #f1d8f5b9, #dceff3d5);
+    border-radius: 3vh;
+    box-shadow: rgb(207, 201, 207);
+}

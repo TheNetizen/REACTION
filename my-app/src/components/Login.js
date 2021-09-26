@@ -1,16 +1,19 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './Login.css'
 import ImgLog from '../login07.jpg'
 import { FaUser } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 
 
 class Login extends React.Component{
-    constructor(){
-        super()
-        this.state({name:'',password:''})
+    // constructor(){
+    //     super()
+    //     this.state({name:'',password:''})
+    //     this.nameRef=React.createRef()
+    //     this.pwdRef=React.createRef()
 
-    }
+    // }
    handleCreate=(e)=>{
      this.props.history.replace('/register')
    }
@@ -42,7 +45,7 @@ class Login extends React.Component{
                             <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}}>Login</button>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'4vh'}}>
-                            <p>Dont have an account<button className='btn btn-link ' style={{textDecoration:'none',marginTop:'-0.6vh',marginLeft:'-1vh'}} onClick={this.handleCreate}>Create Now</button></p>
+                            <p>Dont have an account<button className='btn btn-link buttonCreate btn-without-border' style={{textDecoration:'none',marginTop:'-0.6vh',marginLeft:'-1vh'}} onClick={this.handleCreate}>Create Now</button></p>
                             </div>
 
                             
