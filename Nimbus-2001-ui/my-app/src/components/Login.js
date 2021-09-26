@@ -4,13 +4,15 @@ import './Login.css'
 import ImgLog from '../login07.jpg'
 import { FaUser } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import axios from 'axios'
 
 
 class Login extends React.Component{
     constructor(props){
         super(props)
-        this.state({email:'',password:''})
+        this.state={email:'',password:''}
        }
+   
    handleCreate=(e)=>{
      this.props.history.replace('/register')
    }
@@ -21,6 +23,21 @@ class Login extends React.Component{
        console.log(this.state.email,this.state.password)
    }
    handleLogin=(e)=>{
+       e.preventDefault()
+       const result=""
+       const data={
+           email:this.state.email,
+           password:this.state.password
+       }
+       console.log(data)
+       axios.post('http://localhost:4000/login',{data}).then(
+           result=>{
+            console.log(result)
+           }
+            
+           ).catch(
+               error=>console.log(error)
+            )
        
    }
    render(){

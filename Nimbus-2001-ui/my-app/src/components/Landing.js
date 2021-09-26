@@ -12,7 +12,7 @@ class Landing extends React.Component{
              <div className="card">
 <div className="row" >
         <div className="col-5 " style={{margin:"10px",marginLeft:"130px"}}>
-        <h3 style={{fontFamily:'fantasy',fontStyle:'initial',margin:"10px;"}}><u style={{textDecorationColor:'red'}}>Nimbus-2001</u></h3>
+        <h3 style={{fontFamily:'fantasy',fontStyle:'initial',margin:"10px"}}><u style={{textDecorationColor:'red'}}>Nimbus-2001</u></h3>
 <p >With Nimbuss 2001, we aim to make entire package delivery experience straightforward-providing online tools for shipping, monitoring and tracking, lending our expertise in costumer clearance and keeping abreast of all the latest rules and regulations.</p>
 <button className="btn btn-lg btn-danger">Want to book a service?</button>
         </div>
