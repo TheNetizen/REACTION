@@ -20,6 +20,9 @@ class Login extends React.Component{
        this.setState({[field]:val})
        console.log(this.state.email,this.state.password)
    }
+   handleLogin=(e)=>{
+       
+   }
    render(){
      
         return(
@@ -45,7 +48,7 @@ class Login extends React.Component{
                             <input className="form-control" type="password" id="password" name="password" placeholder="password" value={this.state.password} onChange={this.empState}/><FaEye style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}}>Login</button>
+                            <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}} onClick={this.handleLogin}>Login</button>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'4vh'}}>
                             <p>Dont have an account<button className='btn btn-link buttonCreate btn-without-border' style={{textDecoration:'none',marginTop:'-0.6vh',marginLeft:'-1vh'}} onClick={this.handleCreate}>Create Now</button></p>
