@@ -8,12 +8,27 @@ import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiTwotoneTags } from "react-icons/ai";
-
+import UserProfile from './components/UserProfile';
 import Landing from './components/Landing';
+import ListOfServices from './components/ListOfServices'
 
 
 class App extends React.Component {
+        
         render() {
+        let b=false;
+        let ele=null;
+        if(b){
+           ele= <li className="nav-item ">
+                   <Link to="/userProfile" className="navbar-link" >User Profile</Link>
+                </li>
+        }else{
+            ele=<li className="nav-item ">
+                <Link to="/login" className="navbar-link" >Login</Link>
+               
+                 </li>
+
+        }
                 return(<Router>
                 <React.Fragment>
                 <div className="box">
@@ -24,18 +39,18 @@ class App extends React.Component {
                         <Link to="/home"className="navbar-link" >Home</Link>
                          </li>
                          <li className="nav-item">
-                        <a className="navbar-link" href="/ListOfServices">List of Services</a>
+                        <Link className="navbar-link" to="/listOfServices">List of Services</Link>
                          </li>
-                         <li className="nav-item ">
-                        <Link to="/login" className="navbar-link" >Login</Link>
-                       
-                         </li>
+                         {ele}
+                        
                  </ul>
                 </nav>
                 <Route exact path ='/' component={Landing}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/home" component={Landing}></Route>
                 <Route path='/register' component={Register}></Route>
+                <Route path='/listOfServices' component={ListOfServices}></Route>
+                <Route path='/userProfile' component={UserProfile}></Route>
                 <footer><FaTwitter style={{margin:"4px",fontSize:"4vh"}} /><FaFacebook style={{margin:"4px",fontSize:"4vh"}} /><FaWhatsapp style={{margin:"4px",fontSize:"4vh"}} /></footer>
                 </div>
                 </React.Fragment>
