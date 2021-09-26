@@ -7,15 +7,18 @@ import { FaEye } from "react-icons/fa";
 
 
 class Login extends React.Component{
-    // constructor(){
-    //     super()
-    //     this.state({name:'',password:''})
-    //     this.nameRef=React.createRef()
-    //     this.pwdRef=React.createRef()
-
-    // }
+    constructor(props){
+        super(props)
+        this.state({email:'',password:''})
+       }
    handleCreate=(e)=>{
      this.props.history.replace('/register')
+   }
+   empState=(e)=>{
+       const val=e.target.value
+       const field=e.target.name
+       this.setState({[field]:val})
+       console.log(this.state.email,this.state.password)
    }
    render(){
      
@@ -36,10 +39,10 @@ class Login extends React.Component{
                         <h1 style={{textAlign:"center",marginTop:"15vh"}}><u style={{textDecorationColor:"red",textAlign:"center"}}>Login</u></h1>
                         <form>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <input className="form-control" type="text" id="email" name="email" placeholder="user email" /><FaUser style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
+                            <input className="form-control" type="text" id="email" name="email" placeholder="user email" value={this.state.email} onChange={this.empState} /><FaUser style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <input className="form-control" type="password" id="password" name="password" placeholder="password"/><FaEye style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
+                            <input className="form-control" type="password" id="password" name="password" placeholder="password" value={this.state.password} onChange={this.empState}/><FaEye style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
                             <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}}>Login</button>
