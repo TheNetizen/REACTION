@@ -13,12 +13,16 @@ import Landing from './components/Landing';
 import ListOfServices from './components/ListOfServices'
 
 
-const App=()=> {
+
+ const App=()=> {
+        
+        
         // eslint-disable-next-line
-        const [value, setValue] = React.useState( sessionStorage.getItem('email')||''
-               
-              );
-        console.log("myvalue",value)
+        const [value, setValue] = React.useState( localStorage.getItem('email')||'');
+        const handleComp=()=>{
+                setValue(localStorage.getItem('email'))
+           
+        }
         let ele=null;
         if(value){
            ele= <li className="nav-item ">
@@ -48,7 +52,7 @@ const App=()=> {
                  </ul>
                 </nav>
                 <Route exact path ='/' component={Landing}></Route>
-                <Route path="/login" component={Login}></Route>
+                <Route path="/login" render={props=>(<Login handleComp={handleComp}/>)}></Route>
                 <Route path="/home" component={Landing}></Route>
                 <Route path='/register' component={Register}></Route>
                 <Route path='/listOfServices' component={ListOfServices}></Route>
@@ -57,7 +61,8 @@ const App=()=> {
                 </div>
                 </React.Fragment>
                 </Router>)
-        
+ 
 };
+
 export default App;
 

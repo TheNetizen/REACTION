@@ -7,14 +7,16 @@ import { FaUser } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
-import { useSessionStorageString } from "react-use-window-sessionstorage";
 
-const Login =()=>{
+
+const Login =(props)=>{
+        
+        console.log("props",props.loginStatus)
         const[email,setEmail]=useState("")
         const[password,setPassword]=useState("")
         const[message,setMessage]=useState("")
         // eslint-disable-next-line
-        const[valSession,setValSession]=useSessionStorageString("email",email)
+        
         const history=useHistory()
        
    
@@ -23,11 +25,13 @@ const Login =()=>{
    }
    
    const disp=(result)=>{
-       
+    
        if(result.data.status==="success"){
-       
-        setValSession(email)
+        
+        localStorage.setItem('email',email)
+        props.handleComp()
         history.push('/userProfile')
+        
        }else{
            setMessage(result.data.data.message)
        }
