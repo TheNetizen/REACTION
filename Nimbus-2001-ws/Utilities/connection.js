@@ -1,30 +1,45 @@
 const mongoose=require('mongoose')
-mongoose.connect('mongodb://localhost:27017/NimbusDB',{
-    useNewUrlParser:true,
-    useFindandModify:false,
-    useCreateIndex:false,
-    useUnifiedTopology:true
-}).then(()=>console.log('DB connection successful!'))
+let connection={}
+const url='mongodb://localhost:27017/Nimbus2001DB'
+// mongoose.connect('mongodb://localhost:27017/NimbusDB',{
+//     useNewUrlParser:true,
+//     useFindandModify:false,
+//     useCreateIndex:false,
+//     useUnifiedTopology:true
+// }).then(()=>console.log('DB connection successful!'))
 
 var users = mongoose.Schema({
     
-    Name:{
-        type:String,                  
+    name:{
+        type:String, required: true                
         },
-    EmailId:{
+    email:{
+        type:String,required: true,unique:true
+        },
+    phno:{
+        type:Number,required: true
+        },
+    password:{
         type:String,
-        },
-    PhoneNo:{
-        type:Number,
-        },
-    Password:{
-        type:String,
+        minlength: 6,
+        required: true 
         },
     default:[],
     })
+try{
 
+}catch{}
 let userSchema = mongoose.Schema(users,{collection:'users',timestamps:true})
 
-exports.usersCollection=
-mongoose.modelNames().indexOf('usersCollection')=== -1?
-mongoose.model('usersCollection',users):mongoose.connection.model('usersCollection',users)
+connection.usersCollection=async()=>{
+    try{
+        return  (await mongoose.connect(url, { useNewUrlParser: true,useUnifiedTopology: true })).model("users", userSchema)
+    }catch(err){
+        console.log(err)
+        let error = new Error("Could not connect to database")
+        error.status = 500
+        throw error
+    }
+}
+
+module.exports=connection

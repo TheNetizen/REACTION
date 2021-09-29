@@ -13,12 +13,14 @@ import Landing from './components/Landing';
 import ListOfServices from './components/ListOfServices'
 
 
-class App extends React.Component {
-        
-        render() {
-        let b=false;
+const App=()=> {
+        // eslint-disable-next-line
+        const [value, setValue] = React.useState( sessionStorage.getItem('email')||''
+               
+              );
+        console.log("myvalue",value)
         let ele=null;
-        if(b){
+        if(value){
            ele= <li className="nav-item ">
                    <Link to="/userProfile" className="navbar-link" >User Profile</Link>
                 </li>
@@ -55,7 +57,7 @@ class App extends React.Component {
                 </div>
                 </React.Fragment>
                 </Router>)
-        }
+        
 };
 export default App;
 

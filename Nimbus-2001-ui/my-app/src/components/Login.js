@@ -1,46 +1,63 @@
-import React from 'react'
+//This is login form-> concept used:session storage, controlled form, routing, loading component using history
+import React,{useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Login.css'
 import ImgLog from '../login07.jpg'
 import { FaUser } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
+import { useSessionStorageString } from "react-use-window-sessionstorage";
 
-
-class Login extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={email:'',password:''}
-       }
+const Login =()=>{
+        const[email,setEmail]=useState("")
+        const[password,setPassword]=useState("")
+        const[message,setMessage]=useState("")
+        // eslint-disable-next-line
+        const[valSession,setValSession]=useSessionStorageString("email",email)
+        const history=useHistory()
+       
    
-   handleCreate=(e)=>{
-     this.props.history.replace('/register')
+  const handleCreate=(e)=>{
+     history.push('/register')
    }
-   empState=(e)=>{
-       const val=e.target.value
-       const field=e.target.name
-       this.setState({[field]:val})
-       console.log(this.state.email,this.state.password)
-   }
-   handleLogin=(e)=>{
-       e.preventDefault()
-       const result=""
-       const data={
-           email:this.state.email,
-           password:this.state.password
+   
+   const disp=(result)=>{
+       
+       if(result.data.status==="success"){
+       
+        setValSession(email)
+        history.push('/userProfile')
+       }else{
+           setMessage(result.data.data.message)
        }
-       console.log(data)
-       axios.post('http://localhost:4000/login',{data}).then(
-           result=>{
-            console.log(result)
-           }
-            
-           ).catch(
-               error=>console.log(error)
-            )
+   }
+   const handleLogin=(e)=>{
+       e.preventDefault()
+       
+       if(email==='' || password===''){
+             setMessage("All fields are Mandatory!!!")
+       }
+       else{
+        setMessage("")  
+        const data={
+            email:email,
+            password:password
+        }
+        
+        axios.post('http://localhost:4000/login',{data}).then(
+            result=>{
+             disp(result)
+            }
+             
+            ).catch(
+                error=>console.log(error)
+             )
+       }
+      
        
    }
-   render(){
+  
      
         return(
        
@@ -59,17 +76,21 @@ class Login extends React.Component{
                         <h1 style={{textAlign:"center",marginTop:"15vh"}}><u style={{textDecorationColor:"red",textAlign:"center"}}>Login</u></h1>
                         <form>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <input className="form-control" type="text" id="email" name="email" placeholder="user email" value={this.state.email} onChange={this.empState} /><FaUser style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
+                            <input className="form-control" type="text" id="email" name="email" placeholder="user email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/><FaUser style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <input className="form-control" type="password" id="password" name="password" placeholder="password" value={this.state.password} onChange={this.empState}/><FaEye style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
+                            <input className="form-control" type="password" id="password" name="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/><FaEye style={{position:"absolute",marginTop:"-4vh",marginLeft:"18vh"}}/>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'2vh'}}>
-                            <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}} onClick={this.handleLogin}>Login</button>
+                            <button className='btn btn-primary ' style={{paddingLeft:'3vh',paddingRight:'3vh'}} onClick={handleLogin}>Login</button>
+                            </div>
+                            <div className="form-group text-danger" style={{margin:'2vh',textAlign:'center'}}>
+                                <b >{message}</b>
                             </div>
                             <div className="form-group" style={{textAlign:'center',margin:'4vh'}}>
-                            <p>Dont have an account<button className='btn btn-link buttonCreate btn-without-border' style={{textDecoration:'none',marginTop:'-0.6vh',marginLeft:'-1vh'}} onClick={this.handleCreate}>Create Now</button></p>
+                            <p>Dont have an account<button className='btn btn-link buttonCreate btn-without-border' style={{textDecoration:'none',marginTop:'-0.6vh',marginLeft:'-1vh'}} onClick={handleCreate}>Create Now</button></p>
                             </div>
+
 
                             
 
@@ -92,6 +113,6 @@ class Login extends React.Component{
         )
        
    }
-}
+
 
 export default Login
