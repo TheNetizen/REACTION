@@ -9,9 +9,7 @@ controller.login = async (req, res) => {
     if(data){
         res.status(200).send({
             status: "success",
-            data: {
-                "message": "Logged In Successfully!"
-            }
+            data: data
     })  
     }else{
         throw new Error("Invalid Credentials!!!")
@@ -35,9 +33,7 @@ controller.register= async(req,res)=>{
             console.log("registered")
             res.status(200).send({
                 status: "success",
-                data: {
-                    "message": "Registered Successfully!"
-                }
+                data: data
         })
     
         }else{

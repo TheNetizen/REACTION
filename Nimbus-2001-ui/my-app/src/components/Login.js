@@ -9,6 +9,7 @@ import axios from 'axios'
 import { useHistory } from "react-router-dom";
 
 
+
 const Login =(props)=>{
         
         console.log("props",props.loginStatus)
@@ -29,7 +30,9 @@ const Login =(props)=>{
        if(result.data.status==="success"){
         
         localStorage.setItem('email',email)
-        props.handleComp()
+        localStorage.setItem('name',result.data.data.name)
+        localStorage.setItem('phno',result.data.data.phno)
+        props.handleComp(result)
         history.push('/userProfile')
         
        }else{

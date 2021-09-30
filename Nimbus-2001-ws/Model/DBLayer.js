@@ -5,7 +5,7 @@ dbLayer.login=async(email,password)=>{
     collection=await connection.usersCollection();
     console.log("connected to DB")
     let response = await collection.findOne({"email":email,"password":password});
-    console.log(response)
+    
     if(response!=null){
         return response
     }else{
@@ -17,7 +17,7 @@ dbLayer.register=async(data)=>{
         collection=await connection.usersCollection();
         console.log("connected to DB")
         let response = await collection.create(data);
-        console.log(response)
+        
         if(response!=null){
             return response
         }else{

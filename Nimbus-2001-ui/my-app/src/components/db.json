@@ -1,24 +1,4 @@
 {
-  "bookings": [
-    
-  ],
-  "users": [
-    
-    {
-      "email": "harshita123@gmail.com",
-      "password": "Har@123"
-    },
-    {
-      "email": "harry123@gmail.com",
-      "password": "Har@123"
-    },
-    {
-      "email": "sumit123@gmail.com",
-      "password": "Har@123"
-    }
-       
-
-  ],
   "services": [
     {
       "serviceName": "Domestic Express",
@@ -52,8 +32,5 @@
       "parcelCharges": "Packages are charged on the basis on their weight and travel distance.",
       "parcelSize": "Package can size up to 30 cm (total dimensions of 3 sides) and 1 kg."
     }
-  ],
-  "queries": [
-   
   ]
 }

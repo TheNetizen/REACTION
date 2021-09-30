@@ -19,9 +19,15 @@ import ListOfServices from './components/ListOfServices'
         
         // eslint-disable-next-line
         const [value, setValue] = React.useState( localStorage.getItem('email')||'');
-        const handleComp=()=>{
+        const [userData,setUserData]=React.useState({})
+        const handleComp=(result)=>{
                 setValue(localStorage.getItem('email'))
+                setUserData(result)
            
+        }
+        const handleLogOut=()=>{
+                console.log("logged out")
+                setValue('')
         }
         let ele=null;
         if(value){
@@ -56,7 +62,7 @@ import ListOfServices from './components/ListOfServices'
                 <Route path="/home" component={Landing}></Route>
                 <Route path='/register' component={Register}></Route>
                 <Route path='/listOfServices' component={ListOfServices}></Route>
-                <Route path='/userProfile' component={UserProfile}></Route>
+                <Route path='/userProfile'render={props=>(<UserProfile data={userData} handleLogOut={handleLogOut}/>)}></Route>
                 <footer><FaTwitter style={{margin:"4px",fontSize:"4vh"}} /><FaFacebook style={{margin:"4px",fontSize:"4vh"}} /><FaWhatsapp style={{margin:"4px",fontSize:"4vh"}} /></footer>
                 </div>
                 </React.Fragment>
