@@ -1,0 +1,44 @@
+input::placeholder{
+    font-size: 12px;
+}
+body .ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background:linear-gradient(to bottom, #000000, #00000050) !important;
+    background-color: transparent !important;
+    position:absolute
+}
+.ReactModal__Content.ReactModal__Content--after-open {
+    position: relative !important;
+    margin-left: 30%;
+    width:35%
+    /* top: 50%; */
+}
+ul.faq-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.faq-list li {
+    border: 1px solid #ccc;
+}
+input.form-control {
+    height: 25px;
+    border:none;
+    border-bottom: 1px solid;
+}
+select.form-control {
+    border: none;
+    border-bottom: 1px solid;
+ 
+}
+select.form-control:focus {
+    border: none;
+    border-bottom: 1px solid;
+    box-shadow: none;
+}
+body input.form-control:focus {
+    border: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid !important;
+    border-color: blue !important;
+}

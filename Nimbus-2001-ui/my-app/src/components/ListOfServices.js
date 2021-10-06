@@ -10,9 +10,11 @@ const ListOfServices = (props) => {
   const handleClick = (e) => {
     data.forEach((serv, index) => {
       if (parseInt(serv.id) === parseInt(e.target.id)) {
-        props.handleServ(serv);
+        sessionStorage.setItem("serv",JSON.stringify(serv))
+        history.push('/serviceDetails')
       }
     });
+
   };
 
   return (
