@@ -1,11 +1,17 @@
-import React from 'react'
+import React, {useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react';
 import Modal from 'react-modal'
 
-const BookingForm = (props) => {
+const BookingForm = forwardRef((props,ref) => {
     const [modalisOpen,setModalisOpen]=useState(false)
-    const handleService=(e)=>{
-     setModalisOpen(true)
-    }
+    useImperativeHandle(
+        ref,
+        () => ({
+            handleService(){
+                setModalisOpen(true)
+               }
+        }),
+    )
+   
     const handleCloseModal=(e)=>{
         setModalisOpen(false)
        }
@@ -14,6 +20,7 @@ const BookingForm = (props) => {
            console.log("submitted")
            alert("Your Booking is Confirmed !!!")
        }
+      
         
     return (
         <div>
@@ -76,6 +83,6 @@ const BookingForm = (props) => {
                 </Modal> 
         </div>
     )
-}
+})
 
 export default BookingForm
