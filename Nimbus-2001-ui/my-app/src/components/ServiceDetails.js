@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+
+import React, {useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react';
 import Servdetails from "../servdetails.jpg"
 
 import './ServiceDetails.css'
 import BookingForm from './BookingForm'
 
 function ServiceDetails(props) {
+    const childRef = useRef();
     const servData=JSON.parse(sessionStorage.getItem("serv"))
-   
+   const handleClick=()=>{
+    
+   }
    
   
     if(servData){
@@ -34,7 +38,7 @@ function ServiceDetails(props) {
                     
                           
                              
-                     <button className="btn btn-primary btn form-control" style={{marginTop:'60px'}} onClick={BookingForm.handleService} >Book a Service</button>
+                     <button className="btn btn-primary btn form-control" style={{marginTop:'60px'}} onClick={() => { childRef.current.handleService() }} >Book a Service</button>
                 
                     
     
@@ -64,7 +68,7 @@ function ServiceDetails(props) {
                     </div>
 
                 </div>
-             <BookingForm ref={bookingFormRef}/>
+             <BookingForm ref={childRef}/>
                
             </div>
             
